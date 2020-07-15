@@ -6,10 +6,11 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'has_unique_attribute/version'
 
 Gem::Specification.new do |spec|
-  spec.name    = 'has_unique_attribute'
-  spec.version = HasUniqueAttribute::VERSION
-  spec.authors = ['Mihail-K']
-  spec.email   = []
+  spec.name     = 'has_unique_attribute'
+  spec.version  = HasUniqueAttribute::VERSION
+  spec.authors  = ['Mihail-K']
+  spec.email    = []
+  spec.licenses = ['MIT']
 
   spec.summary     = 'Handle unique attributes safely using the database.'
   spec.description = 'Adds custom handling for database uniqueness constraints to ActiveRecord.'
@@ -31,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop'
-  spec.add_development_dependency 'rubocop-performance'
-  spec.add_development_dependency 'rubocop-rspec'
+  spec.add_development_dependency 'rubocop', '~> 0.88'
+  spec.add_development_dependency 'rubocop-performance', '~> 1.7'
+  spec.add_development_dependency 'rubocop-rspec', '~> 1.42'
 end
