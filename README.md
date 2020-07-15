@@ -82,7 +82,7 @@ class Membership < Application
   belongs_to :user
   belongs_to :club
 
-  has_unique_index :user, index: 'index_memberships_on_club_id_and_user_id', message: 'is already a member'
+  has_unique_attribute :user, index: 'index_memberships_on_club_id_and_user_id', message: 'is already a member'
 end
 ```
 
