@@ -41,9 +41,13 @@ private
     define_method(:save) do |*args|
       existing_method.bind(self).call(*args)
     rescue ActiveRecord::RecordNotUnique => error
-      errors.add(attribute_name, message) if error.message.include?(index_name)
+      if error.message.include?(index_name)
+        errors.add(attribute_name, message)
 
-      false
+        return false
+      end
+
+      raise error
     end
   end
 
@@ -59,6 +63,7 @@ private
     rescue ActiveRecord::RecordNotUnique => error
       if error.message.include?(index_name)
         errors.add(attribute_name, message)
+
         raise ActiveRecord::RecordInvalid, self
       end
 
