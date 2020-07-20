@@ -88,6 +88,11 @@ end
 
 The error is only applied to the specified attribute.
 
+### Caveats
+
+* Errors triggering the `has_unique_attribute` behaviour happen further into the save process than standard validations (after validation and `before_save` callbacks are fired). Behaviours that should not be executed if a uniqueness constraint fails should be placed `after_save` or `after_commit`, or be transactional (and rolled-back as part of the transaction).
+* The `create_or_find_by` methods require that an `ActiveRecord::RecordNotUnique` error be raised, which `has_unique_attribute` consumes and does not rethrow.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
