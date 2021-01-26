@@ -38,8 +38,8 @@ private
   def handle_unique_attribute_on_save(attribute_name, index_name, message)
     existing_method = instance_method(:save)
 
-    define_method(:save) do |*args|
-      existing_method.bind(self).call(*args)
+    define_method(:save) do |*args, **kwargs|
+      existing_method.bind(self).call(*args, **kwargs)
     rescue ActiveRecord::RecordNotUnique => error
       if error.message.include?(index_name)
         errors.add(attribute_name, message)
