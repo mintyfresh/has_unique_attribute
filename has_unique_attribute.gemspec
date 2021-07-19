@@ -8,16 +8,16 @@ require 'has_unique_attribute/version'
 Gem::Specification.new do |spec|
   spec.name     = 'has_unique_attribute'
   spec.version  = HasUniqueAttribute::VERSION
-  spec.authors  = ['Mihail-K']
+  spec.authors  = ['Minty Fresh']
   spec.email    = []
   spec.licenses = ['MIT']
 
   spec.summary     = 'Handle unique attributes safely using the database.'
   spec.description = 'Adds custom handling for database uniqueness constraints to ActiveRecord.'
-  spec.homepage    = 'https://github.com/Mihail-K/has_unique_attribute'
+  spec.homepage    = 'https://github.com/mintyfresh/has_unique_attribute'
 
   spec.metadata['homepage_uri']    = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/Mihail-K/has_unique_attribute'
+  spec.metadata['source_code_uri'] = 'https://github.com/mintyfresh/has_unique_attribute'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
