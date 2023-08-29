@@ -16,6 +16,8 @@ Gem::Specification.new do |spec|
   spec.description = 'Adds custom handling for database uniqueness constraints to ActiveRecord.'
   spec.homepage    = 'https://github.com/mintyfresh/has_unique_attribute'
 
+  spec.required_ruby_version = '>= 3.2'
+
   spec.metadata['homepage_uri']    = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/mintyfresh/has_unique_attribute'
 
@@ -32,7 +34,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop', '~> 0.88'
-  spec.add_development_dependency 'rubocop-performance', '~> 1.7'
-  spec.add_development_dependency 'rubocop-rspec', '~> 1.42'
+  spec.add_development_dependency 'rubocop', '~> 1.56'
+  spec.add_development_dependency 'rubocop-performance', '~> 1.19'
+  spec.add_development_dependency 'rubocop-rspec', '~> 2.23'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end

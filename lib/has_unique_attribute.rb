@@ -23,6 +23,8 @@ private
 
     raise ArgumentError, "#{name} does not have index: `#{index_name}`" if index.nil?
     raise ArgumentError, "#{name} defines an index `#{index_name}`, but it is not unique" unless index.unique
+  rescue ActiveRecord::NoDatabaseError, ActiveRecord::StatementInvalid
+    # Database or table does not exist yet. Ignore for now.
   end
 
   # @param attribute_name [String]
@@ -39,7 +41,7 @@ private
     existing_method = instance_method(:save)
 
     define_method(:save) do |*args, **kwargs|
-      existing_method.bind(self).call(*args, **kwargs)
+      existing_method.bind_call(self, *args, **kwargs)
     rescue ActiveRecord::RecordNotUnique => error
       if error.message.include?(index_name)
         errors.add(attribute_name, message)
@@ -59,7 +61,7 @@ private
     existing_method = instance_method(:save!)
 
     define_method(:save!) do |*args, **kwargs|
-      existing_method.bind(self).call(*args, **kwargs)
+      existing_method.bind_call(self, *args, **kwargs)
     rescue ActiveRecord::RecordNotUnique => error
       if error.message.include?(index_name)
         errors.add(attribute_name, message)
