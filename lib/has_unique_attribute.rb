@@ -19,6 +19,9 @@ private
   # @param index_name [String]
   # @return [void]
   def assert_unique_index_defined!(index_name)
+    return unless table_exists? # Database schema probably hasn't been loaded yet.
+
+    index_name = index_name.to_s
     index = connection.indexes(table_name).find { |index_definition| index_definition.name == index_name }
 
     raise ArgumentError, "#{name} does not have index: `#{index_name}`" if index.nil?
